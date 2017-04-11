@@ -66,7 +66,10 @@ public class ContactServlet extends HttpServlet {
 				Contact contact = new Contact(request.getParameter("name"), address.getId());
 				contactRepository.create(contact);
 				//redirect to contact view page
-				request.getRequestDispatcher("contact?id=" +contact.getId()).forward(request, response);			}
+//				request.getRequestDispatcher("contact?id=" +contact.getId()).forward(request, response);
+				response.sendRedirect("contact?id=" +contact.getId());
+
+				}
 			//look up existing contact and address, edit fields and persist
 			else if(request.getParameter("edit") != null)
 			{
@@ -83,6 +86,16 @@ public class ContactServlet extends HttpServlet {
 				//redirect to contact view page
 				response.sendRedirect("contact?id=" +contact.getId());
 			}
+			else if(request.getParameter("delete") != null)
+			{
+				long id = Long.parseLong(request.getParameter("id"));
+				Contact contact = contactRepository.find(id);
+				Address address = addressRepository.find(contact.getAddressId());
+				contactRepository.delete(contact);
+				addressRepository.delete(address);
+				//response.sendRedirect("contact?id=" +contact.getId());
+				response.sendRedirect("contacts");
+				} 
 			else
 			{
 				request.getRequestDispatcher("jsp/viewContact.jsp").forward(request, response);
@@ -90,7 +103,7 @@ public class ContactServlet extends HttpServlet {
 			
 
 		} catch (SQLException e) {
-				throw new ServletException(e);
+	 			throw new ServletException(e);
 
 		}
 	}

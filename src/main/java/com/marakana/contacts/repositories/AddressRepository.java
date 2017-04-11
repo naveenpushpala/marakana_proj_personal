@@ -147,7 +147,7 @@ public class AddressRepository {
 		try{
 		Statement statement = connection.createStatement();
 		try {
-			statement.executeUpdate("delete from address where address= '" +address.getId());
+			statement.executeUpdate("delete from address where id= '" +address.getId() +"'");
 			} finally {
 				statement.close();
 			}

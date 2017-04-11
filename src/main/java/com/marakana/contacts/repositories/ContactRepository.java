@@ -146,7 +146,7 @@ public class ContactRepository {
 		try{
 		Statement statement = connection.createStatement();
 		try {
-			statement.executeUpdate("delete from contact where id= '" +contact.getId());
+			statement.executeUpdate("delete from contact where id= '" +contact.getId() +"'");
 			} finally {
 				statement.close();
 			}
