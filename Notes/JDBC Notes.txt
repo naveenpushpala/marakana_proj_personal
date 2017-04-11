@@ -1,0 +1,26 @@
+JDBC Pain Points/ORM Requirements
+
+Code Maintenance/evolution issues
+	- entity and sql can get out of sync as code evolves
+		- objects must determine DB Schema:
+	- one must know sql
+		- should be able to just get objects from somewhere/persist objects
+	*** no explicit relationship between entities(one-to-one???)
+		- system must know relationships and constraints
+Flexibility/reuse issues
+	-code is tied to a specific SQL implementation (dialect)
+General Ugliness/boilerplate:
+	-very repetitive code, lots of try-finally
+		-forget JDBC
+	-checked SQLExceptions everywhere
+		-forget JDBC
+	-marshalling and unmarshalling is very clumsy
+
+perfomance/correctness issues:
+	-no joins
+	-no transactions
+	-no good way to create table if not exists
+
+
+Servlet Pain points
+	httpservlet API is restrictive

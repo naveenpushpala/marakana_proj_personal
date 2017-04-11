@@ -1,4 +1,4 @@
-package com.marakana.contacts.servlets;
+/*package com.marakana.contacts.servlets;
 
 import java.sql.SQLException;
 
@@ -26,7 +26,7 @@ public class Setup implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent arg0) {
 
 		// instantiate Address Repository
-		/*
+		
 		 * try { AddressRepository addressRepository = new AddressRepository();
 		 * try { addressRepository.init(); } catch (SQLException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); } Address address =
@@ -36,7 +36,7 @@ public class Setup implements ServletContextListener {
 		 * 
 		 * } catch (NamingException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); }
-		 */
+		 
 
 		ContactRepository contactRepository = null;
 		contactRepository = new ContactRepository();
@@ -54,4 +54,4 @@ public class Setup implements ServletContextListener {
 
 	}
 
-}
+}*/

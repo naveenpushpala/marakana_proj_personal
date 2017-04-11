@@ -1,17 +1,42 @@
 package com.marakana.contacts.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Contact {
 
-	private Long id;
-	private String name;
-	private Long addressId;
+	public Contact(String name, Long addressId) {
+		super();
+		this.name = name;
+		this.addressId = addressId;
+	}
 	
 	public Contact(){}
-	public Contact(String name,Long addressId)
-	{
-		this.name = name;
-		this.addressId=addressId;
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Column
+	private String name;
+	
+	@Column
+	private Long addressId;
+	
+	@Column
+	private String phoneNumber;
+	
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -29,6 +54,6 @@ public class Contact {
 	}
 	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
-	}
+	}	
 	
 }

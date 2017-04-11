@@ -16,7 +16,6 @@ import com.marakana.contacts.repositories.ContactRepository;
 public class ContactListServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
 	private final ContactRepository contactRepository = new ContactRepository();
 	
 	
@@ -24,15 +23,13 @@ public class ContactListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		try {
+	//	response.setContentType("text/html");
+	//	response.getWriter().println("<html><body><h1>HelloWorld</h1></body></html>");
+		
 			request.setAttribute("contacts", contactRepository.findAll());
 			RequestDispatcher view = request.getRequestDispatcher("jsp/contactList.jsp");
 			view.forward(request, response);
 		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			throw new ServletException(e);
-		}
 		
 	}
 }
