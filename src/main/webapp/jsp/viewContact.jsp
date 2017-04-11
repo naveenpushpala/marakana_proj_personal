@@ -5,14 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>view Contact</title>
+<title>${contact.name}</title>
 </head>
 <body>
 
-<h1>view contact</h1>
-<form action ="contact?add" method="post">
-<input type="hidden" name="add">
+<h1>${contact.name}</h1>
 	<ul>
+		<c:set var="address" value="${contact.address}" />
 		<li>street: ${address.street}</li>
 		<li>city: ${address.city},${address.state},${address.zip} </li>
 </ul>

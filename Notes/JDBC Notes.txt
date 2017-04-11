@@ -24,3 +24,5 @@ perfomance/correctness issues:
 
 Servlet Pain points
 	httpservlet API is restrictive
+	it's hard to remember where different things were implemented, because they're all if-elses
+	
