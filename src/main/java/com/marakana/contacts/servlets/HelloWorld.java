@@ -19,14 +19,32 @@ public class HelloWorld extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	/*	response.setContentType("text/html");
+		response.setContentType("text/html");
 		response.getWriter().println("<html><body><h1>HelloWorld</h1></body></html>");
-	*/
+	
+		
+		String name = request.getParameter("name");
+		request.setAttribute("name", name);
 		RequestDispatcher view = request.getRequestDispatcher("jsp/hello.jsp");
 		view.forward(request, response);
-	}
+	}*/
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+ 			throws ServletException, IOException {
+		response.setContentType("text/html");
+	//	response.setContentType("text/html");
+ 	//	response.getWriter().println("<html><body><h1>HelloWorld</h1></body></html>");
+ 	//	response.getWriter().println("<html><body><h1>HelloWorld</h1></body></html>");
+		
+		String[] names = request.getParameter("names").split("\\|");
+		request.setAttribute("names", names);
+ 		RequestDispatcher view = request.getRequestDispatcher("jsp/hello.jsp");
+ 		view.forward(request, response);
+ 		view.forward(request, response);
+ 	}
+ 	}
 
 
-}
+
