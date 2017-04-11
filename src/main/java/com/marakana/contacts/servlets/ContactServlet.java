@@ -31,7 +31,24 @@ public class ContactServlet extends HttpServlet {
 		if (request.getParameter("add") != null) {
 			request.getRequestDispatcher("jsp/addContact.jsp").forward(request, response);
 		} else {
-			super.doGet(request, response);
+			long id = Long.parseLong(request.getParameter("id"));
+			
+			try {
+				Contact contact = contactRepository.find(id);
+				Address address = addressRepository.find(contact.getAddressId());
+				request.setAttribute("contact", contact);
+				request.setAttribute("address", address);
+				if(request.getParameter("edit") != null){
+					
+					request.getRequestDispatcher("jsp/editContact.jsp").forward(request, response);
+					}
+				request.getRequestDispatcher("jsp/viewContact.jsp").forward(request, response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		}
 	}
 
@@ -41,18 +58,39 @@ public class ContactServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		try {
-
+				//create new contact and address from form parameters and persist
 			if (request.getParameter("add") != null) {
 				Address address = new Address(request.getParameter("street"), request.getParameter("city"),
 						request.getParameter("state"), request.getParameter("zip"));
 				addressRepository.create(address);
 				Contact contact = new Contact(request.getParameter("name"), address.getId());
 				contactRepository.create(contact);
-				response.sendRedirect("contacts");
+				//redirect to contact view page
+				request.getRequestDispatcher("contact?id=" +contact.getId()).forward(request, response);			}
+			//look up existing contact and address, edit fields and persist
+			else if(request.getParameter("edit") != null)
+			{
+				long id = Long.parseLong(request.getParameter("id"));
+				Contact contact = contactRepository.find(id);
+				Address address = addressRepository.find(contact.getAddressId());
+				contact.setName(request.getParameter("name"));
+				address.setStreet(request.getParameter("street"));
+				address.setCity(request.getParameter("city"));
+				address.setState(request.getParameter("state"));
+				address.setZip(request.getParameter("zip"));
+				contactRepository.update(contact);
+				addressRepository.update(address);
+				//redirect to contact view page
+				response.sendRedirect("contact?id=" +contact.getId());
 			}
+			else
+			{
+				request.getRequestDispatcher("jsp/viewContact.jsp").forward(request, response);
+			}	
+			
 
 		} catch (SQLException e) {
-			throw new ServletException(e);
+				throw new ServletException(e);
 
 		}
 	}

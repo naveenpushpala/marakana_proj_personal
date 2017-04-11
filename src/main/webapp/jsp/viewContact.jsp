@@ -5,17 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Contacts</title>
+<title>view Contact</title>
 </head>
 <body>
-	Contacts From JSP 
-	
+
+<h1>view contact</h1>
+<form action ="contact?add" method="post">
+<input type="hidden" name="add">
 	<ul>
-	<c:forEach var="contact" items="${contacts}">
-		<li><a href="contact?id=${contact.id}">${contact.name}</a></li>
-	</c:forEach>
-	</ul>
-	<a href="contact?add"> add a new contact</a>
-	
+		<li>street: ${address.street}</li>
+		<li>city: ${address.city},${address.state},${address.zip} </li>
+</ul>
+	<a href="contact?edit&id=${contact.id}">Edit contact </a>|<a href="contacts">back to contact list</a> 
+</form>
 </body>
 </html>
