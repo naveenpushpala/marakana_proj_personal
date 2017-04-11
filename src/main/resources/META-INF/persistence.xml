@@ -9,7 +9,6 @@
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create" />
-			<property name="hibernate.connection.url" value="jdbc:hsqldb:hsql://localhost:9001/trainingdb;hsqldb.lock_file=false"/>
 		</properties>
 	</persistence-unit>
 </persistence>
