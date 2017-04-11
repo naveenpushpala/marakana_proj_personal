@@ -15,6 +15,7 @@ public class Contact {
 		super();
 		this.name = name;
 		this.address = address;
+		
 	}
 	
 	public Contact(){}
