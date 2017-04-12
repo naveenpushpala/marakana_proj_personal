@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marakana.contacts.entities.Address;
-import com.marakana.contacts.entities.Contact;
-import com.marakana.contacts.repositories.ContactRepository;
+import com.marakana.contacts.entities.Person;
+import com.marakana.contacts.repositories.PersonRepository;
 
 @Controller
-public class ContactController extends HttpServlet {
+public class PersonController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	@Autowired
-	private  ContactRepository contactRepository;
+	private  PersonRepository personRepository;
 
 
 	/*@RequestMapping(value= "/contacts" , method=RequestMethod.GET)
@@ -34,12 +34,7 @@ public class ContactController extends HttpServlet {
 		view.forward(request, response);
 	}*/
 	
-	@RequestMapping(value="/contacts", method=RequestMethod.GET)
-	public String getContactList(Model model)
-	{
-		model.addAttribute("contacts",contactRepository.findAll());
-		return "contact/list";
-	}
+	
 	
  	/*@RequestMapping(value= "/contact" , method=RequestMethod.GET)
 	public void getContact(HttpServletRequest request, HttpServletResponse response)
@@ -63,55 +58,55 @@ public class ContactController extends HttpServlet {
 			request.getRequestDispatcher("view/contact/view.jsp").forward(request, response);
 		
 		}
-	}*/
-
+	}
+*/
 	
-	@RequestMapping(value="/contact",params="add", method=RequestMethod.GET)
-	public String getAddContent(){
-		return "contact/add";
+	@RequestMapping(value="/person",params="add", method=RequestMethod.GET)
+	public String getAddPerson(){
+		return "person/add";
 	}
 	
-	@RequestMapping(value="/contact",params="edit", method=RequestMethod.GET)
-	public String getEditContact(@RequestParam long id, Model model)
+	@RequestMapping(value="/person",params="edit", method=RequestMethod.GET)
+	public String getEditPerson(@RequestParam long id, Model model)
 	{
-		model.addAttribute("contact", contactRepository.findOne(id));
-		return "contact/edit";
+		model.addAttribute("person", personRepository.findOne(id));
+		return "person/edit";
 	}
 
-	@RequestMapping(value="/contact", method=RequestMethod.GET)
-	public String getViewContact(@RequestParam long id,Model model)
+	@RequestMapping(value="/person", method=RequestMethod.GET)
+	public String getViewPerson(@RequestParam long id,Model model)
 	{
-		model.addAttribute("contact", contactRepository.findOne(id));
-		return "contact/view";
+		model.addAttribute("person", personRepository.findOne(id));
+		return "person/view";
 	}	
-	@RequestMapping(value="/contact",params="add", method=RequestMethod.POST)
-	public String postAddContact(@RequestParam String name, @RequestParam String street,@RequestParam String city, @RequestParam String state, @RequestParam String zip)
+	@RequestMapping(value="/person",params="add", method=RequestMethod.POST)
+	public String postAddPerson(@RequestParam String name, @RequestParam String street,@RequestParam String city, @RequestParam String state, @RequestParam String zip)
 	{
 		Address address = new Address(street,city,state,zip);
-		Contact contact = null; //new Contact(name,address);
-		contact= contactRepository.save(contact);
-		return "redirect:contact?id="+contact.getId();
+		Person person = new Person(name,address);
+		person= personRepository.save(person);
+		return "redirect:person?id="+person.getId();
 	}	
 	
-	@RequestMapping(value="/contact",params="edit", method=RequestMethod.POST)
-	public String postEditContact(@RequestParam long id,@RequestParam String name,@RequestParam String street, @RequestParam String city, @RequestParam String state, @RequestParam String zip)
+	@RequestMapping(value="/person",params="edit", method=RequestMethod.POST)
+	public String postEditPerson(@RequestParam long id,@RequestParam String name,@RequestParam String street, @RequestParam String city, @RequestParam String state, @RequestParam String zip)
 	{
-		Contact contact = contactRepository.findOne(id);
-		Address address = null; //contact.getAddress();
-		contact.setName(name);
+		Person person = personRepository.findOne(id);
+		Address address =person.getAddress();
+		person.setName(name);
 		address.setStreet(street);
 		address.setCity(city);
 		address.setState(state);
 		address.setZip(zip);
-		contactRepository.save(contact);
+		personRepository.save(person);
 		
-		return "redirect:contact?id=" +contact.getId();
+		return "redirect:person?id=" +person.getId();
 	}
 	
-	@RequestMapping(value="/contact", params="delete",method=RequestMethod.POST)
-	public String postDeleteContact(@RequestParam long id)
+	@RequestMapping(value="/person", params="delete",method=RequestMethod.POST)
+	public String postDeletePerson(@RequestParam long id)
 	{
-		contactRepository.delete(id);
+		personRepository.delete(id);
 		return "redirect:contacts";
 	}
 	
@@ -154,6 +149,6 @@ public class ContactController extends HttpServlet {
 				request.getRequestDispatcher("jsp/view.jsp").forward(request, response);
 			}
 		
-	}
-*/
+	}*/
+
 }

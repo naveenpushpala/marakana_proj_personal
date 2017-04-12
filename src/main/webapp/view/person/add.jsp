@@ -10,7 +10,7 @@
 <body>
 
 <h1>Add Contact</h1>
-<form action ="contact?add" method="post">
+<form action ="person?add" method="post">
 <input type="hidden" name="add">
 	<ul>
 		<li>name: <input type="text" name="name"></li>

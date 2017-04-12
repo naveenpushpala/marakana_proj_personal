@@ -6,15 +6,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Contact {
 
-	public Contact(String name, Address address) {
+	public Contact(String name) {
 		super();
 		this.name = name;
-		this.address = address;
 		
 	}
 	
@@ -25,9 +27,6 @@ public class Contact {
 	
 	@Column
 	private String name;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	private Address address;
 	
 	@Column
 	private String phoneNumber;
@@ -52,11 +51,5 @@ public class Contact {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Long addressId) {
-		this.address = address;
-	}	
 	
 }
