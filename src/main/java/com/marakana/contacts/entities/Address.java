@@ -6,11 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Address {
+public class Address extends BaseEntity{
 
-	@Id
-	@GeneratedValue
-	private Long id;
 	
 	@Column
 	private String Street;
@@ -32,13 +29,7 @@ public class Address {
 	}
 	
 	
-	public Long getId() {
-		return id;
-	}
 	
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getStreet() {
 		return Street;
 	}

@@ -5,17 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${person.name}</title>
+<title>Add company</title>
 </head>
 <body>
 
-<h1>${person.name}</h1>
+<h1>Add company</h1>
+<form action ="company?add" method="post">
+<input type="hidden" name="add">
 	<ul>
-		<c:set var="address" value="${person.address}" />
-		<li>street: ${address.street}</li>
-		<li>city: ${address.city},${address.state},${address.zip} </li>
-</ul>
-	<a href="${person.url}&edit">Edit person </a>|<a href="contacts">back to contact list</a> 
+		<li>name: <input type="text" name="name"></li>
+	</ul>
+	<input type="submit" value="add">
+	<a href="contacts">back to contact list </a>
+
 </form>
 </body>
-</html>
+</html> 

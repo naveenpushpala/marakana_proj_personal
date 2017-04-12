@@ -7,11 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Office {
+public class Office extends BaseEntity{
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	
 	
 	@OneToOne
 	private Address address;
@@ -36,13 +34,7 @@ public class Office {
 
 	
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public Address getAddress() {
 		return address;

@@ -5,17 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${person.name}</title>
+<title>${company.name}</title>
 </head>
 <body>
 
-<h1>${person.name}</h1>
-	<ul>
-		<c:set var="address" value="${person.address}" />
-		<li>street: ${address.street}</li>
-		<li>city: ${address.city},${address.state},${address.zip} </li>
-</ul>
-	<a href="${person.url}&edit">Edit person </a>|<a href="contacts">back to contact list</a> 
+<h1>${company.name}</h1>
+	<a href="${company.url}&edit">Edit person </a>|<a href="contacts">back to contact list</a> 
+	<a href="contacts">back to contact list</a>
 </form>
 </body>
 </html>
