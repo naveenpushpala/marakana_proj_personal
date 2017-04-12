@@ -1,4 +1,4 @@
-package com.marakana.contacts.repositories;
+/*package com.marakana.contacts.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -13,4 +13,4 @@ public class AddressRepository extends Repository<Address> {
 	public AddressRepository(){
 		super(Address.class);
 	}
-}
+}*/

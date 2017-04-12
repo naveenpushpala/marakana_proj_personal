@@ -1,4 +1,4 @@
-package com.marakana.contacts.servlets;
+/*package com.marakana.contacts.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,9 +17,9 @@ import com.marakana.contacts.repositories.ContactRepository;
 @WebServlet("/contact")
 public class ContactServlet extends HttpServlet {
 
-	/**
+	*//**
 	 * 
-	 */
+	 *//*
 	private static final long serialVersionUID = 1L;
 	private final AddressRepository addressRepository = new AddressRepository();
 	private final ContactRepository contactRepository = new ContactRepository();
@@ -93,4 +93,4 @@ public class ContactServlet extends HttpServlet {
 		
 	}
 
-}
+}*/

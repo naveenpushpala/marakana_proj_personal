@@ -5,13 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Contact</title>
+<title>Contacts</title>
 </head>
 <body>
+	Contacts From JSP 
+	
+	<ul>
 	<c:forEach var="contact" items="${contacts}">
-	 <li><a href="person?id=${contact.url}">${contact.name}</a></li> <!-- FIX ME: url -->
+		<li><a href="contact?id=${contact.id}">${contact.name}</a></li>
 	</c:forEach>
-	<a href="person?add">add a new person</a>| <a href="company?add">add new Company</a>
+	</ul>
+	<a href="contact?add"> add a new contact</a>
 	
 </body>
-</html> 
+</html>

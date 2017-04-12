@@ -5,22 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>view Contact</title>
+<title>${contact.name}</title>
 </head>
 <body>
 
 <h1>${contact.name}</h1>
-<form action ="contact?add" method="post">
-<input type="hidden" name="add">
 	<ul>
 		<c:set var="address" value="${contact.address}" />
 		<li>street: ${address.street}</li>
-		<li>city: ${address.city} </li>
-		<li>state:${address.state}</li>
-		<li>zip:${address.zip} </li>
-	</ul>
-	<a href="contacts">to list </a>
-	<a href="contact?edit&id=${contact.id}">edit contact </a> |<a href="contacts">back to contacts</a>
+		<li>city: ${address.city},${address.state},${address.zip} </li>
+</ul>
+	<a href="contact?edit&id=${contact.id}">Edit contact </a>|<a href="contacts">back to contact list</a> 
 </form>
 </body>
 </html>

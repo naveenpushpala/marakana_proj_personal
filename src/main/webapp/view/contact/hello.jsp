@@ -11,7 +11,7 @@
 	Contacts From JSP 
 	
 	<ul>
-	<c:forEach var="name" items="${contacts}">
+	<c:forEach var="contact" items="${contacts}">
 		<li><a href="???">${contact.name}</a></li>
 	</c:forEach>
 	</ul>

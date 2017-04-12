@@ -10,24 +10,25 @@
 <body>
 
 <h1>Edit Contact</h1>
-<form action ="contact?edit" method="post">
+<form action ="contact" method="post">
 <input type="hidden" name="edit">
 <input type="hidden" name="id" value="${contact.id}">
 	<ul>
+		<c:set var="address" value="${contact.address}" />
 		<li>name: <input type="text" name="name" value="${contact.name}"></li>
-		<li>street: <input type="text" name="street" value="${contact.address.street}"></li>
-		<li>city: <input type="text" name="city" value="${contact.address.city} "></li>
-		<li>state: <input type="text" name="state" value="${contact.address.state} "></li>
-		<li>zip: <input type="text" name="zip" value="${contact.address.zip} "></li>
+		<li>street: <input type="text" name="street" value="${address.street}"></li>
+		<li>city: <input type="text" name="city" value="${address.city} "></li>
+		<li>state: <input type="text" name="state" value="${address.state}"></li>
+		<li>zip: <input type="text" name="zip" value="${address.zip}"></li>
 	</ul>
-	
-	<input type="submit" value="edit" >
+	<input type="submit" value="edit">
 </form>
-	<form action="contact" method="post">
+
+<form action="contact" method="post">
 		<input type="hidden" name="delete">
 		<input type="hidden" name="id" value="${contact.id}">
 		<input type="submit" value="delete">
 	</form>
-	<a href="contacts">to list </a>
+	<a href="contacts">back to contact list </a>
 </body>
 </html> 

@@ -1,4 +1,4 @@
-package com.marakana.contacts.servlets;
+/*package com.marakana.contacts.servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,4 +32,4 @@ public class ContactListServlet extends HttpServlet {
 		
 		
 	}
-}
+}*/

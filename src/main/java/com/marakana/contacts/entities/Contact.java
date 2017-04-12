@@ -26,7 +26,7 @@ public class Contact {
 	@Column
 	private String name;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
 	@Column

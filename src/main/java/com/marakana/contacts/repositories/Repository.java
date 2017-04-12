@@ -1,4 +1,4 @@
-package com.marakana.contacts.repositories;
+/*package com.marakana.contacts.repositories;
 
 import java.util.List;
 
@@ -38,4 +38,4 @@ public class Repository<E> {
 		return em.createQuery("from " +entityClass.getSimpleName(),entityClass).getResultList();
 	}
 	
-}
+}*/

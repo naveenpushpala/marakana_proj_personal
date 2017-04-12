@@ -20,7 +20,7 @@
 		<li>zip: <input type="text" name="zip"></li>
 	</ul>
 	<input type="submit" value="add">
-	<a href="contacts">to list </a>
+	<a href="contacts">back to contact list </a>
 
 </form>
 </body>
