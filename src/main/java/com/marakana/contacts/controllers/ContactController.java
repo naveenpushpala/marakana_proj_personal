@@ -41,7 +41,7 @@ public class ContactController extends HttpServlet {
 		return "contact/list";
 	}
 	
- 	@RequestMapping(value= "/contact" , method=RequestMethod.GET)
+ 	/*@RequestMapping(value= "/contact" , method=RequestMethod.GET)
 	public void getContact(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -63,10 +63,10 @@ public class ContactController extends HttpServlet {
 			request.getRequestDispatcher("view/contact/view.jsp").forward(request, response);
 		
 		}
-	}
+	}*/
 
 	
-/*	@RequestMapping(value="/contact",params="add", method=RequestMethod.GET)
+	@RequestMapping(value="/contact",params="add", method=RequestMethod.GET)
 	public String getAddContent(){
 		return "contact/add";
 	}
@@ -113,9 +113,9 @@ public class ContactController extends HttpServlet {
 	{
 		contactRepository.delete(id);
 		return "redirect:contacts";
-	}*/
+	}
 	
-	@RequestMapping(value= "/contact" , method=RequestMethod.POST)
+	/*@RequestMapping(value= "/contact" , method=RequestMethod.POST)
 	public void postContact(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			if (request.getParameter("add") != null) {
@@ -155,5 +155,5 @@ public class ContactController extends HttpServlet {
 			}
 		
 	}
-
+*/
 }
