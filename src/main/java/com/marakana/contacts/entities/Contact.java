@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
-public abstract class Contact extends BaseEntity{
+public abstract class Contact extends UrlEntity{
 
 	public Contact(String name) {
 		super();
@@ -44,6 +44,5 @@ public abstract class Contact extends BaseEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public abstract String getUrl();
 	
 }

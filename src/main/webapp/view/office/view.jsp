@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${company.name}</title>
+<title>${office.name}</title>
 </head>
 <body>
 
-<h1>${company.name}</h1>
-<ul>
-	<c:forEach var="office" items="${company.offices }">
-		<li><a href="${office.url}">${office.name}</a></li>	
-	</c:forEach>
+<h1>${office.name}</h1>
+	<ul>
+		<c:set var="address" value="${office.address}" />
+		<li>street: ${address.street}</li>
+		<li>city: ${address.city},${address.state},${address.zip} </li>
 </ul>
-	<a href="${company.url}&edit">Edit person </a>|<a href="contacts">back to contact list</a> 
-	<a href="office?add&company_id=${company.id}">add office</a>
-	<a href="contacts">back to contact list</a>
+	<a href="${office.url}&edit">Edit office </a>|
+	<a href="${office.company.url}">back to ${office.company.name}</a> 
 </form>
 </body>
 </html>

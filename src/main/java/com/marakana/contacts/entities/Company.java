@@ -3,6 +3,7 @@ package com.marakana.contacts.entities;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -20,7 +21,7 @@ public class Company extends Contact {
 	
 	
 
-	@OneToMany(mappedBy="company")
+	@OneToMany(mappedBy="company",fetch=FetchType.EAGER)
 	private Set<Office> offices;
 
 	//	@JoinTable(joinColumns=@JoinColumn(name="company_id"),inverseJoinColumns=@JoinColumn(name="office_id"))
@@ -33,9 +34,6 @@ public class Company extends Contact {
 		this.offices = offices;
 	}
 
-	@Override
-	public String getUrl() {
-		return "company?id=" +getId();
-	}
+	
 	
 }
