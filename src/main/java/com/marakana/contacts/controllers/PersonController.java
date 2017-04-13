@@ -1,14 +1,10 @@
 package com.marakana.contacts.controllers;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marakana.contacts.entities.Address;
 import com.marakana.contacts.entities.Person;
+import com.marakana.contacts.repositories.CompanyRepository;
 import com.marakana.contacts.repositories.PersonRepository;
 
 @Controller
@@ -24,6 +21,9 @@ public class PersonController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Autowired
 	private  PersonRepository personRepository;
+	
+	@Autowired
+	private CompanyRepository companyRepository;
 
 
 	/*@RequestMapping(value= "/contacts" , method=RequestMethod.GET)
@@ -70,6 +70,8 @@ public class PersonController extends HttpServlet {
 	public String getEditPerson(@RequestParam long id, Model model)
 	{
 		model.addAttribute("person", personRepository.findOne(id));
+		model.addAttribute("managers", personRepository.findAll());
+		model.addAttribute("employers",companyRepository.findAll());
 		return "person/edit";
 	}
 
@@ -89,11 +91,15 @@ public class PersonController extends HttpServlet {
 	}	
 	
 	@RequestMapping(value="/person",params="edit", method=RequestMethod.POST)
-	public String postEditPerson(@RequestParam long id,@RequestParam String name,@RequestParam String street, @RequestParam String city, @RequestParam String state, @RequestParam String zip)
+	@Transactional
+	public String postEditPerson(@RequestParam long id,@RequestParam String name,@RequestParam String street, @RequestParam String city, @RequestParam String state, @RequestParam String zip
+			,@RequestParam("manager_id") long managerId, @RequestParam("employer_id") long employerId)
 	{
 		Person person = personRepository.findOne(id);
 		Address address =person.getAddress();
 		person.setName(name);
+		person.setManager(personRepository.findOne(managerId));
+		person.setEmployer(companyRepository.findOne(employerId));
 		address.setStreet(street);
 		address.setCity(city);
 		address.setState(state);
