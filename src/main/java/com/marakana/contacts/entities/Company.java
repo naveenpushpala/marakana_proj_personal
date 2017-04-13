@@ -2,6 +2,7 @@ package com.marakana.contacts.entities;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ public class Company extends Contact {
 	
 	
 
-	@OneToMany(mappedBy="company",fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="company",fetch=FetchType.EAGER,cascade= CascadeType.ALL,orphanRemoval=true)
 	private Set<Office> offices;
 
 	//	@JoinTable(joinColumns=@JoinColumn(name="company_id"),inverseJoinColumns=@JoinColumn(name="office_id"))

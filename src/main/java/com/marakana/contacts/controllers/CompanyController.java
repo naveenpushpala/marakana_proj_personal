@@ -1,11 +1,6 @@
 package com.marakana.contacts.controllers;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.marakana.contacts.entities.Address;
 import com.marakana.contacts.entities.Company;
 import com.marakana.contacts.repositories.CompanyRepository;
+import com.marakana.contacts.repositories.OfficeRepository;
 
 @Controller
 public class CompanyController extends HttpServlet {
@@ -25,6 +20,8 @@ public class CompanyController extends HttpServlet {
 	@Autowired
 	private  CompanyRepository companyRepository;
 
+	@Autowired
+	private OfficeRepository officeRepository;
 
 	/*@RequestMapping(value= "/contacts" , method=RequestMethod.GET)
 	public void getContactList(HttpServletRequest request, HttpServletResponse response)
@@ -102,6 +99,7 @@ public class CompanyController extends HttpServlet {
 	@RequestMapping(value="/company", params="delete",method=RequestMethod.POST)
 	public String postDeleteCompany(@RequestParam long id)
 	{
+		officeRepository.delete(companyRepository.findOne(id).getOffices());
 		companyRepository.delete(id);
 		return "redirect:contacts";
 	}

@@ -13,13 +13,13 @@ public class Office extends UrlEntity{
 
 	
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(optional=false,cascade=CascadeType.ALL)
 	private Address address;
 
-	@Column
+	@Column(nullable=false,length=64)
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional=false)
 	private Company company;
 	
 	public Company getCompany() {

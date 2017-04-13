@@ -26,3 +26,27 @@ Servlet Pain points
 	httpservlet API is restrictive
 	it's hard to remember where different things were implemented, because they're all if-elses
 	
+	
+Spring
+	DA/I
+		JDBC
+		ORM
+		OXM
+		JMS
+		Tx
+	Web
+		web
+		servlet
+		portlet
+		struts
+	aop
+	aspects
+	instrumentation
+	
+	core container
+		beans
+		core
+		context
+		EL(Expression langauage)
+	Test
+  	
